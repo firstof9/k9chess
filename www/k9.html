@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<title>K9 Controller</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="themes/k9.min.css" />
+<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="jquery/jquery.mobile.structure-1.4.5.min.css" />
+<!-- REMOVED D3 to get rid of syntax error -->
+<!-- <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script> -->
+<script src="jquery/jquery-1.11.1.min.js"></script>
+<script src="jquery/jquery-ui.min.js"></script>
+<script src="jquery/jquery.ui.touch-punch.min.js"></script>
+<script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+<script src="jquery/virtualjoystick.js"></script>
+<script type="text/javascript" src="k9stage1.js"></script>
+</head>
+<body>
+
+<!-- K9 Power Controller Page on/off capabilities -->
+<div data-role="page" data-theme="a" id="pg_power">
+<div data-role="header" data-position="fixed">
+<h1>Power Control</h1>
+<a href="#pg_exit" id="status" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-btn-icon-right ui-icon-cloud">Error</a>
+</div><!-- /header -->
+<div data-role="content">
+<fieldset>
+<div class="ui-grid-a">
+<div class="ui-block-a">
+<div class="ui-field-contain">
+<label for="checkbox-based-flipswitch">Eye lights:</label>
+<input type="checkbox" id="eyes" data-role="flipswitch" class="togglesw">
+</div>
+</div>
+<div class="ui-block-b">
+<div class="ui-field-contain">
+<label for="checkbox-based-flipswitch">Back lights:</label>
+<input type="checkbox" id="lights" data-role="flipswitch" class="togglesw">
+</div>
+</div>
+<div class="ui-block-a">
+<div class="ui-field-contain">
+<label for="select-based-flipswitch">Head position:</label>
+<select id="head" data-role="flipswitch">
+<option value="down">Down</option>
+<option value="up">Up</option>
+</select>
+</div>
+</div>
+<div class="ui-block-b">
+<div class="ui-field-contain">
+<label for="select-based-flipswitch">Tail position:</label>
+<select id="tail" data-role="flipswitch">
+<option value="down">Down</option>
+<option value="up">Up</option>
+</select>
+</div>
+</div>
+</fieldset>
+</div><!-- /content -->
+<div data-role="footer" align="center" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal"  data-mini="true">
+<a href="#pg_motor" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-video">Motor</a>
+<a href="#pg_audio" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-audio">Audio</a>
+<a href="#pg_servo" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-action">Servo</a>
+</div>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- K9 Servo Tuner -->
+<div data-role="page" data-theme="a" id="pg_servo">
+<div data-role="header" data-position="fixed">
+<h1>Servo Tuning</h1>
+<a href="#pg_exit" id="status" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-btn-icon-right ui-icon-cloud">Error</a>
+</div><!-- /header -->
+<div data-role="content">
+
+<label for="select-choice-0" class="select">Servo:</label>
+<select name="select-choice-0" id="servo_choice">
+<option value="0">0 - Neck</option>
+<option value="1">1 - Steering</option>
+<option value="2">2 - Motor</option>
+<option value="3">3 - Ears</option>
+<option value="4">4 - Tail Vertical</option>
+<option value="5">5 - Tail Horizontal</option>
+</select>
+
+<label for="slider-fill">Servo pulse:</label>
+<input type="range" name="slider-fill" id="servo_pulse" value="375" min="150" max="600" data-highlight="true" />
+
+<button id="servo_send">Send</button>
+
+</div><!-- /content -->
+<div data-role="footer" align="center" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal"  data-mini="true">
+<a href="#pg_motor" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-video">Motor</a>
+<a href="#pg_audio" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-audio">Audio</a>
+<a href="#pg_power" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-power">Power</a>
+</div>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- K9 Audio Controller Mood Buttons and Speech -->
+<div data-role="page" data-theme="a" id="pg_audio">
+<div data-role="header" data-position="fixed">
+<h1>Audio Control</h1>
+<a href="#pg_exit" id="status" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-btn-icon-right ui-icon-cloud">Error</a>
+</div><!-- /header -->
+<div data-role="content">
+</div><!-- /content -->
+
+<div class="ui-grid-a">
+<div class="ui-block-a">
+<button class="mood_but" id="wake_up">Wake Up</button>
+</div>
+
+<div class="ui-block-b">
+<button class="mood_but" id="sad">Sad</button>
+</div>
+
+<div class="ui-block-a">
+<button class="mood_but" id="scanning">Scanning</button>
+</div>
+
+<div class="ui-block-b">
+<button class="mood_but" id="sleep">Sleep</button>
+</div>
+
+<div class="ui-block-b">
+<button class="mood_but" id="thanks">Thanks</button>
+</div>
+
+<div class="ui-block-b">
+<button class="mood_but" id="home">Home now</button>
+</div>
+
+</div>
+<div data-role="footer" align="center" data-position="fixed">
+<div data-role="controlgroup" data-type="horizontal"  data-mini="true">
+<a href="#pg_power" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-power">Power</a>
+<a href="#pg_motor" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-video">Motor</a>
+<a href="#pg_servo" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-action">Servo</a>
+</div>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- K9 Motor Controller and Video Feed -->
+<div data-role="page" data-theme="a" id="pg_motor">
+<div data-role="header" data-position="fixed">
+<h1>Motor Control</h1>
+<a href="#pg_exit" id="status" class="ui-btn ui-corner-all ui-shadow ui-btn-right ui-btn-icon-right ui-icon-cloud">Error</a>
+</div><!-- /header -->
+
+<div data-role="content">
+
+<div id="joystickcontainer" style="overflow: hidden;text-align: center;text-overflow: ellipsis;white-space: nowrap;text-align: center;margin: 0 auto;">
+
+<!-- next line was K9 picture -->
+<!-- img src="K9-joystick.png" alt="k9" style="margin:0 auto; margin-left:auto; margin-right:auto; align:center; text-align:center;" -->
+
+<! -- camera preview -->
+<body onload="setTimeout('init();', 100);">
+    <center>
+      <div><img id="mjpeg_dest" /></div>
+    </center>
+ </body>
+
+</div>
+
+</div><!-- /content -->
+
+<div data-role="footer" data-position="fixed" align="center">
+<div data-role="controlgroup" data-type="horizontal" data-mini="true">
+<a href="#pg_power" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-power">Power</a>
+<a href="#pg_audio" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-audio">Audio</a>
+<a href="#pg_servo" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-icon-left ui-icon-action">Servo</a>
+</div>
+</div><!-- /footer -->
+</div><!-- /page -->
+
+</body>
+</html>
