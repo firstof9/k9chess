@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# simple script to interact with pandorabot
+# replace XXXX and 9999 with your application keys
+
+app_id=9999999999999
+client_name=XXXXX
+sessionid=9999999
+user_key=99999999999999999999999999999999
+botname=XXXXX
+input=$@
+
+echo $input
+
+input_url=$(urlencode $input)
+
+echo $input_url
+
+request='https://aiaas.pandorabots.com/talk/'"$app_id"'/'"$botname"'?input='"$input_url"'&client_name='"$client_name"'&sessionid='"$sessionid"'&user_key='"$user_key"
+
+echo "$request"
+
+response=$(curl -X POST "$request")
+
+echo $response
+
+speech=${response%]*}
+speech=${speech#*[}
+
+echo $speech
+
+tts $speech
+
