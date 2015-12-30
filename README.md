@@ -30,3 +30,18 @@ k9.html | JQuery Mobile HTML5 pages for user interface
 k9stage1.js | JavaScript program that captures user events and passes them and a control heartbeat to node-RED
 jquery | Supporting JavaScript libraries
 themes | Custom JQuery Mobile CSS Theme for K9
+
+## PiAUISuite modified files
+
+These are new or modified versions of files for Steve Hickson’s
+Voicecommand v3 for Raspberry Pi.
+
+File | Description
+---  | ---
+chat | The new chat file enables K9 to enter into a conversation using Pandorabots.
+tts | The modified tts file means that K9 uses male computer generated voice rather than the female Google version used by Voicecommand.
+urlencode | The urlencode script enables reserved characters to be passed to the Padorabots web service.
+
+## Pandorabots Personality Files
+
+The files in the files directory define the on-line behaviour of the K9 Pandorabot.  The K9 files are based on Rosie, which is a fork of the ALICE2 brain.  The Pandorabot CLI can be used to upload the brain to your own Pandorabots instance.

@@ -1,0 +1,18 @@
+<aiml version="2.0">
+
+<category><pattern>WHAT IS YOUR NAME</pattern><template>why is that?</template></category>
+
+
+        
+<category><pattern>WHAT IS YOUR NAME</pattern><template>My designation is K9 Mark 4</template></category>
+
+
+        
+<category><pattern>WHAT IS YOUR NAME</pattern><template>What do you do?</template></category>
+
+
+        
+<category><pattern>WHAT IS YOUR NAME</pattern><template>My designation is K9 Mark 4</template></category>
+
+
+</aiml>
