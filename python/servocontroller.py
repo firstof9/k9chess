@@ -1,3 +1,7 @@
+#
+# Python controller for servo based K9
+# Now superseded by K9PythonController
+#
 import sys   # allows for command line to be interpreted
 import json  # enables creation of JSON strings
 import time	 # enables the failsafe
