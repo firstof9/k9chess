@@ -25,7 +25,7 @@ function connect() {
   ws = new WebSocket("ws://www.XXX.XXX.XXX:XXXX/admin/ws/k9");
   ws.onopen = function(evt){ws.send('{"type":"information", "command":"Command circuit established"}');};
   ws.onclose = function(evt){ws.send('{"type":"information", "command":"Command circuit closed"}');};
-  ws.onmessage = function(evt){ distance(evt);};
+  ws.onmessage = function(evt){ command(evt);};
   sb = new WebSocket("ws://XXX.XXX.XXX.XXX:XXXX/admin/ws/status");
   sb.onopen = function(evt){sb.send('{"type":"information", "command":"K9 feedback established"}'); alive=true;};
   sb.onclose = function(evt){sb.send('{"type":"information", "command":"K9 feedback ended"}'); alive=false;};
@@ -36,6 +36,12 @@ function connect() {
 function browserAlive() {
 	var message = '{"type":"navigation", "command":"alive"}';
 	ws.send(message);
+	}
+
+function command(evt){
+	var commandmsg = JSON.parse(evt.data);
+	var messagetype = commandmsg.payload.type;
+	var messagecommand = commandmsg.payload.command;
 	}
 
 function distance(evt){

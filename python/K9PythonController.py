@@ -59,7 +59,7 @@ def getStatusInfo() :
 	if not sim :
 	    left = PBR.GetMotor1()
 	    right = PBR.GetMotor2()
-	result = json.dumps({"type":"status","left": left,"right": right,"lights": lights,"eyes": eyes}, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=(',', ': '), encoding="utf-8", default=None, sort_keys=False)
+	result = json.dumps({"type":"status","command":"update","left": left,"right": right,"lights": lights,"eyes": eyes}, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=(',', ': '), encoding="utf-8", default=None, sort_keys=False)
 	return result
 
 # manages the ws socket connection from this Controller to local node-RED server
